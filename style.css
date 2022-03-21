@@ -2,6 +2,7 @@
   --background-secondary: #000;
   --white: #fff;
   --red: #f00;
+  --spacing-sm: 0.5rem;
 }
 body {
   font-size: 15px;
@@ -23,11 +24,10 @@ a {
 a.button,
 button.button {
   color: #fff;
-  background-color: #000;
+  background-color: #cabab4;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 10px 20px;
-  border: 1px solid #fff;
   display: inline-block;
   font-size: 1rem;
   white-space: nowrap;
@@ -77,7 +77,7 @@ li {
 }
 
 .main-navigation {
-  background: #000;
+  background: #484848;
 }
 
 .main-navigation .container {
@@ -87,11 +87,6 @@ li {
 ul.menu {
   display: flex;
   align-items: center;
-}
-.menu a {
-  padding: 1rem;
-  color: #fff;
-  display: block;
 }
 
 .user-menu {
@@ -105,35 +100,48 @@ ul.menu {
   padding-left: 5px;
 }
 
-.menu a:hover {
-  background: #222;
+.menu > li > a {
+  color: #fff;
+}
+
+.menu > li > a,
+.col.link-list a,
+.col.tabs.link-list a {
+  padding: 1rem;
+  display: block;
+}
+
+.menu > li > a:hover {
+  background: #b4b7ac;
 }
 
 .sub-menu {
   position: absolute;
   width: 100%;
-  max: width 1200px;
+  max-width: 1200px;
   left: 0;
-  background: #d5d3c6;
+  background: #e1dfd2;
   display: none;
-  gap: 1rem;
+  justify-content: space-between;
+  padding: 5px 1rem;
 }
 
-.sub-menu a:hover,
-.sub-menu a :active {
-  background: #bfbbbb;
+.col.link-list a:hover,
+.tabs.link-list a:hover,
+ul.icon-menu a:hover,
+.tab-panel a:hover,
+.col.tabs li.active {
+  background: #c5c2ad;
+  transition: 0.4s;
 }
 
 .menu li:hover .sub-menu {
   display: flex;
+  gap: 2%;
 }
 
 .sub-menu a {
   color: #000;
-}
-
-.sub-menu a:hover {
-  color: #fff;
 }
 
 .sub-menu h3 {
@@ -174,6 +182,9 @@ ul.menu {
   margin: 20px 0;
   display: inline-block;
 }
+.button-left {
+  display: block;
+}
 
 .google-map a.button:hover {
   color: #000;
@@ -186,6 +197,10 @@ ul.menu {
 ul.icon-menu {
   display: flex;
   flex-wrap: wrap;
+}
+
+.icon-menu__text h4 {
+  margin-top: 8px;
 }
 
 ul.icon-menu li {
@@ -201,10 +216,6 @@ ul.icon-menu li {
   color: #6e6a6a;
 }
 
-.card {
-  padding: 15px;
-}
-
 .card__video img {
   max-width: 230px;
   margin-top: 30px;
@@ -214,17 +225,37 @@ ul.icon-menu li {
   color: #345be9;
 }
 
-ul.menu__invoice a {
+ul.menu__invoice a,
+.fetaured-menu a {
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.3rem 0;
+}
+
+.menu__link {
+  margin: 1rem 0;
+}
+
+ul.menu__invoice a:hover,
+.fetaured-menu a:hover {
+  color: #222;
+  text-decoration: underline;
+}
+
+.menu__link a:hover {
+  color: #345be9;
+}
+
+discriptive__links {
+  margin-bottom: 20px;
 }
 
 .discriptive__links p {
   max-width: 150px;
+  margin-top: 5px;
 }
 
 .sub-menu .fetaured-menu {
-  padding: 30px;
+  padding: 30px 40px;
   background: #eee;
 }
 
@@ -232,50 +263,99 @@ ul.menu__invoice a {
   margin-bottom: 10px;
 }
 
-.fetaured-menu li {
-  padding: 0.4rem 0;
-  font-size: 14px;
+.sub-menu.vertical-tabs {
+  padding: 0;
 }
 
-.tab-panel a {
+.vertical-tabs .col.tabs {
+  flex-grow: 1;
+}
+
+.vertical-tabs .col.tabs a {
+  font-size: 1rem;
+}
+
+.col.tab-panel a {
   display: flex;
   gap: 2%;
-}
-.col.tabs {
-  background: #fff;
-  box-shadow: 0 10px 0 0 #eee;
+  border-bottom: 1px solid #c5c2ad;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
 }
 
 .col.tab-panel {
   flex-basis: 70%;
 }
+.col.tab-panel i.fa-solid.fa-comment {
+  font-size: 25px;
+}
 
 .news-list {
   display: flex;
+  gap: 3%;
   flex-wrap: wrap;
 }
-.news-list .news-item {
-  flex-basis: 50%;
-}
 
-.news-card-date {
-  margin-top: 25px;
-  font-size: 12px;
+.news-list .news-item {
+  flex-basis: 47%;
 }
 
 .news-card-image {
-  flex-basis: 100px;
+  flex-basis: 75px;
 }
 
 .news-card-image img {
   max-width: 100%;
 }
 
-news-card-text {
-  flex-grow: 1;
-  max-width: 200px;
+.news-card-text {
+  padding: 0.5rem 0;
 }
 
 .news-card-text p {
   margin-top: 0;
+}
+
+.news-card-date {
+  margin-top: 5px;
+  font-size: 12px;
+}
+@media (max-width: 500px) {
+  .menu li:hover .sub-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sub-menu .col,
+  .icon-menu {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.icon-menu,
+  .col.tab-panel,
+  .news-list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+  }
+
+  .news-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+@media (max-width: 700px) {
+  .sub-menu {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 900px) {
+  .sub-menu .link-list {
+    flex-basis: 45%;
+  }
 }
