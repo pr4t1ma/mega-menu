@@ -20,6 +20,12 @@ a {
   text-decoration: none;
   font-size: 14px;
 }
+img {
+  max-width: 100%;
+}
+body {
+  font-size: 16px;
+}
 
 a.button,
 button.button {
@@ -358,4 +364,48 @@ discriptive__links {
   .sub-menu .link-list {
     flex-basis: 45%;
   }
+}
+.main-menu {
+  display: none;
+}
+
+#main-menu:target {
+  display: block;
+}
+.hamburger i.fa-solid.fa-bars {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+}
+.hamburger {
+  margin: 15px 0;
+  align-items: center;
+}
+
+.cards {
+  display: flex;
+  gap: 5%;
+}
+
+.card-text {
+  max-width: 200px;
+}
+
+.card-text {
+  max-width: 200px;
+  background: #b4b7ac;
+  padding: 16px;
+  position: relative;
+  top: -29px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.card-text p {
+  color: #fff;
+}
+
+.title h3 {
+  text-align: center;
 }
